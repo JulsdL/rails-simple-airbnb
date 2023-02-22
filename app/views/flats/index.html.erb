@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light"></nav>
+<div class="container-fluid">
+  <a class="navbar-brand" href="/flats">Simple Airbnb</a>
+  <div id="navbarSupportedContent" class="collapse navbar-collapse">
+    <div class="ms-auto flex">
+      <form class="flex my-2 my-lg-0"></form>
+      <a class="btn btn-outline-primary my-2 my-sm-0 ms-2" href="/flats/new">Add Flat</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Flats</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p> All <%= Flat.all.count %> flats</h1>
+    </div>
+  </div>
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-md-4">
+        <div class="flat-card">
+          <div class="flat-card-image">
+            <img src="../public/images/ferme.png'" /></div>
+          <div class="flat-card-content">
+            <div class="flat-card-title">
+              <h4><%= link_to flat.name, flat_path(flat) %></h4>
+            </div>
+            <p><%= flat.address %></p>
+            <div class="flex">
+              <div class="flex align-items-center">
+                <i class="fa-solid fa-people-line"></i>
+                <span><%= flat.number_of_guests %></span>
+              </div>
+              <div class="flex align-items-center ms-3">
+                <i class="fa-solid fa-euro-sign"></i>
+                <span><%= flat.price_per_night %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </ul>
